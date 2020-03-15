@@ -9,13 +9,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     @GetMapping("/admin")
-    @PreAuthorize("hasAuthority('PRIVILEGE_ADMIN_READ')")
+    @PreAuthorize("hasAuthority('PRIVILEGE_ADMIN_READ') and hasAuthority('PRIVILEGE_USER_READ')")
     public String admin() {
         return "admin can access this endpoint";
     }
 
-    @PostMapping("/admin1")
-    @PreAuthorize("hasAuthority('PRIVILEGE_ADMIN_READ')")
+    @GetMapping("/admin1")
+//    @PreAuthorize("hasAuthority('PRIVILEGE_ADMIN_READ')")
     public String admin1() {
         return "admin1 can access this endpoint";
     }

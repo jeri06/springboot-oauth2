@@ -107,9 +107,9 @@ public class OAuth2ServerConfiguration {
             endpoints
                     .tokenStore(tokenStore())
                     .authenticationManager(authenticationManager)
-                    .userDetailsService(userDetailsService)
-                    .accessTokenConverter(jwtAccessTokenConverter)
-                    .reuseRefreshTokens(false);
+                    .userDetailsService(userDetailsService);
+//                    .accessTokenConverter(jwtAccessTokenConverter) for generate token jwt
+//                    .reuseRefreshTokens(false);
         }
 
         @Override
@@ -120,7 +120,7 @@ public class OAuth2ServerConfiguration {
                     .secret(passwordEncoder.encode("secret"))
                     .authorizedGrantTypes("password", "refresh_token")
                     .scopes("read", "write")
-                    .accessTokenValiditySeconds(600);
+                    .accessTokenValiditySeconds(100);
 
         }
 
